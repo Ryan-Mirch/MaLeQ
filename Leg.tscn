@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://thgtnt4jl02w"]
+
+[ext_resource type="Script" path="res://Leg.gd" id="1_lv44e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_opsa1"]
+size = Vector3(0.03, 0.03, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3j8mr"]
+size = Vector3(0.03, 0.03, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_anhem"]
+size = Vector3(0.03, 0.03, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f16oe"]
+size = Vector3(0.03, 0.03, 0.2)
+
+[node name="Leg" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 0
+mass = 0.2
+continuous_cd = true
+can_sleep = false
+script = ExtResource("1_lv44e")
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, -1.59872e-14, -7.10543e-15, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+solver_priority = 2
+params/bias = 0.99
+angular_limit/enable = true
+angular_limit/bias = 0.99
+motor/enable = true
+motor/target_velocity = 0.0
+motor/max_impulse = 500.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0.1)
+mesh = SubResource("BoxMesh_opsa1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0.1)
+shape = SubResource("BoxShape3D_3j8mr")
+
+[node name="Tibia" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 7.10543e-15, 1, 3.90799e-14, 0, -2.84217e-14, 1, 0, 0, 0.2)
+collision_layer = 0
+mass = 0.2
+continuous_cd = true
+can_sleep = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tibia"]
+transform = Transform3D(1, 4.26326e-14, 0, -1.42109e-14, 1, 7.10543e-15, 0, 1.42109e-14, 1, 0, 0.015, 0.1)
+mesh = SubResource("BoxMesh_anhem")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tibia"]
+transform = Transform3D(1, 4.26326e-14, 0, -1.42109e-14, 1, 7.10543e-15, 0, 1.42109e-14, 1, 0, 0.015, 0.1)
+shape = SubResource("BoxShape3D_f16oe")
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Tibia"]
+transform = Transform3D(8.9407e-08, 6.18172e-08, 1, 1, -3.42191e-07, -8.9407e-08, 3.42191e-07, 1, -6.18172e-08, 0, 0, 0)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+params/bias = 0.99
+angular_limit/enable = true
+angular_limit/upper = 2.18166
+angular_limit/lower = -0.959931
+angular_limit/bias = 0.99
+motor/enable = true
+motor/max_impulse = 500.0

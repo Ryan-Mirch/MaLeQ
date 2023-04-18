@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ufnn2llth4ud"]
+
+[ext_resource type="Script" path="res://Body.gd" id="1_lm7nj"]
+[ext_resource type="PackedScene" uid="uid://thgtnt4jl02w" path="res://Leg.tscn" id="2_u5xlj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3413e"]
+size = Vector3(0.5, 0.1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ayf3"]
+size = Vector3(0.5, 0.1, 0.5)
+
+[node name="MaLeQ" type="RigidBody3D"]
+transform = Transform3D(0, 4.37114e-08, 1, -8.74228e-08, -1, 4.37114e-08, 1, -8.74228e-08, 0, 0, 0.593989, 0)
+collision_layer = 0
+mass = 0.1
+script = ExtResource("1_lm7nj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.67037e-22, 0, -1.67037e-22, 1, 4.37113e-09, 0.05, -2.18557e-09)
+mesh = SubResource("BoxMesh_3413e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.67037e-22, 0, -1.67037e-22, 1, 4.37113e-09, 0.05, -2.18557e-09)
+shape = SubResource("BoxShape3D_4ayf3")
+
+[node name="Leg1" parent="." instance=ExtResource("2_u5xlj")]
+transform = Transform3D(0.707107, 1.42109e-14, 0.707107, 4.9738e-14, 1, 7.10543e-15, -0.707107, 3.90799e-14, 0.707107, 0.25, 0.05, 0.25)
+
+[node name="Leg2" parent="." instance=ExtResource("2_u5xlj")]
+transform = Transform3D(-0.707106, 1.31134e-07, 0.707106, 1.23634e-07, 1, -6.18172e-08, -0.707106, 4.37114e-08, -0.707106, 0.25, 0.0500004, -0.25)
+
+[node name="Leg3" parent="." instance=ExtResource("2_u5xlj")]
+transform = Transform3D(-0.707106, 1.74845e-07, -0.707106, 1.85452e-07, 1, 6.18172e-08, 0.707106, -8.74227e-08, -0.707106, -0.25, 0.05, -0.25)
+
+[node name="Leg4" parent="." instance=ExtResource("2_u5xlj")]
+transform = Transform3D(0.707106, 4.37113e-08, -0.707107, 6.18173e-08, 1, 1.23634e-07, 0.707107, -1.31134e-07, 0.707106, -0.25, 0.0499998, 0.25)
