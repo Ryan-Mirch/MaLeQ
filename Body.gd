@@ -16,11 +16,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-		
+	$DistanceFromCenter.text = str(snapped(abs(position.z),0.01))
+	$DistanceTraveled.text = str(snapped(abs(position.x),0.01))
 func _physics_process(delta: float) -> void:	
 	loopTimer += delta
-	if loopTimer > 2:
+	if loopTimer > 1:
 		loopTimer = 0
 		loop()
 
@@ -34,3 +34,6 @@ func loop() -> void :
 	leg2.set_tibia_velocity(randf_range(MIN_VEL,MAX_VEL))
 	leg3.set_tibia_velocity(randf_range(MIN_VEL,MAX_VEL))
 	leg4.set_tibia_velocity(randf_range(MIN_VEL,MAX_VEL))
+	
+func backwards_barrier_hit() -> void:
+	pass

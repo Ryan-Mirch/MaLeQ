@@ -15,7 +15,6 @@ size = Vector3(0.03, 0.03, 0.2)
 size = Vector3(0.03, 0.03, 0.2)
 
 [node name="Leg" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 0
 mass = 0.2
 continuous_cd = true
@@ -63,8 +62,8 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 params/bias = 0.99
 angular_limit/enable = true
-angular_limit/upper = 2.18166
-angular_limit/lower = -0.959931
+angular_limit/upper = 0.959931
+angular_limit/lower = -2.35619
 angular_limit/bias = 0.99
 motor/enable = true
 motor/max_impulse = 500.0

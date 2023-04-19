@@ -1,8 +1,9 @@
 2a60927148abd1d33b818b535e306557
-::res://::1681801186
+::res://::1681858335
 Body.gd::GDScript::-1::1681800267::0::1::::<>RigidBody3D<>::
 icon.svg::CompressedTexture2D::7976083471017489623::1681783809::1681783815::1::::<><>::
 Leg.gd::GDScript::-1::1681798446::0::1::::<>RigidBody3D<>::
 Leg.tscn::PackedScene::1348437618926777816::1681800256::0::1::::<><>::res://Leg.gd
 Quadruped.tscn::PackedScene::1414912733406466087::1681800256::0::1::::<><>::res://Body.gd<>uid://thgtnt4jl02w
+README.md::TextFile::-1::1681801357::0::1::::<><>::
 Test.tscn::PackedScene::8196485615652978949::1681800267::0::1::::<><>::uid://ufnn2llth4ud

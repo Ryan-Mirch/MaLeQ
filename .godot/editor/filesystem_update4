@@ -1,5 +1,6 @@
 res://Test.tscn
 res://Leg.tscn
-res://Leg.gd
-res://Body.gd
 res://Quadruped.tscn
+res://Body.gd
+res://Leg.gd
+res://Backwards Barrier.gd
