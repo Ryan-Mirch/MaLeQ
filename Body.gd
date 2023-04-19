@@ -6,6 +6,8 @@ extends RigidBody3D
 @onready var leg3 = $Leg3
 @onready var leg4 = $Leg4
 
+@onready var fitnessLabel = $Fitness
+
 var loopTimer = 0
 var index = 0
 
@@ -23,8 +25,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$DistanceFromCenter.text = str(snapped(abs(position.z),0.01))
-	$DistanceTraveled.text = str(snapped(position.x,0.01))
+	fitnessLabel.text = str(snapped(calculate_fitness(),0.01))
 	
 	
 func _physics_process(delta: float) -> void:
@@ -63,3 +64,15 @@ func initialize_data_with_random_numbers() -> void:
 		for key in data.keys():
 			data[key].append(randf_range(MIN_VEL,MAX_VEL))
 			
+
+func calculate_fitness() -> float:
+	var distanceTraveled = position.z
+	var distanceFromCenter = abs(position.x)
+	var fitness = 0
+	
+	fitness += distanceTraveled * 10
+	fitness -= distanceFromCenter * 2
+	
+	if distanceTraveled < 0: fitness -= 100
+	
+	return fitness

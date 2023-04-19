@@ -66,7 +66,7 @@ surface_material_override/0 = SubResource("ORMMaterial3D_ugihv")
 script = ExtResource("3_ioo81")
 
 [node name="Center Line" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.90177e-06, 0, 0.0438498, 0, 1.09863, 0, -43.5075, 0, -1.91674e-09, 0, -0.025, -21.744)
+transform = Transform3D(5.70532e-06, 0, -0.0438498, 0, 1.09863, 0, 43.5075, 0, 5.75021e-09, 0, -0.025, 21.776)
 mesh = SubResource("BoxMesh_67ye7")
 surface_material_override/0 = SubResource("ORMMaterial3D_dc11k")
 script = ExtResource("3_ioo81")
