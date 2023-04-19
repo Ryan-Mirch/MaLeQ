@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://do1o6kgarvm58"]
 
 [ext_resource type="Script" path="res://free_look_camera.gd" id="1_822dy"]
-[ext_resource type="PackedScene" uid="uid://ufnn2llth4ud" path="res://Quadruped.tscn" id="1_q6dco"]
 [ext_resource type="Script" path="res://Backwards Barrier.gd" id="3_ioo81"]
+[ext_resource type="Script" path="res://Manager.gd" id="4_cbuu0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4h4h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -71,5 +71,30 @@ mesh = SubResource("BoxMesh_67ye7")
 surface_material_override/0 = SubResource("ORMMaterial3D_dc11k")
 script = ExtResource("3_ioo81")
 
-[node name="MaLeQ" parent="." instance=ExtResource("1_q6dco")]
-transform = Transform3D(1.19209e-07, 0, -1, 0, 1, 0, 1, 0, 1.19209e-07, 0, 0.593989, -0.324979)
+[node name="Manager" type="CanvasLayer" parent="."]
+script = ExtResource("4_cbuu0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Manager"]
+offset_left = 21.0
+offset_top = 22.0
+offset_right = 452.0
+offset_bottom = 62.0
+theme_override_constants/separation = 41
+
+[node name="Start Generation" type="Button" parent="Manager/HBoxContainer"]
+layout_mode = 2
+text = "Start Generation
+"
+
+[node name="Generation Quantity" type="SpinBox" parent="Manager/HBoxContainer"]
+layout_mode = 2
+max_value = 1000.0
+value = 10.0
+
+[node name="End Generation" type="Button" parent="Manager/HBoxContainer"]
+layout_mode = 2
+text = "End Generation
+"
+
+[connection signal="pressed" from="Manager/HBoxContainer/Start Generation" to="Manager" method="_on_start_generation_pressed"]
+[connection signal="pressed" from="Manager/HBoxContainer/End Generation" to="Manager" method="_on_end_generation_pressed"]

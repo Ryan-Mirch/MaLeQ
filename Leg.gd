@@ -5,7 +5,7 @@ extends RigidBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	set_coxa_velocity(0)
+	set_femur_velocity(0)
 	set_tibia_velocity(-3)
 
 
@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func set_coxa_velocity(vel: float) -> void:
+func set_femur_velocity(vel: float) -> void:
 	CoxaJoint.set_param(CoxaJoint.PARAM_MOTOR_TARGET_VELOCITY, vel)
 	
 

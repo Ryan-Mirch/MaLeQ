@@ -1,3 +1,7 @@
+HBoxContainer
+SpinBox
+Button
+CanvasLayer
 Label3D
 CollisionShape3D
 Area3D
