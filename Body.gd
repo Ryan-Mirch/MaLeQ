@@ -11,17 +11,14 @@ extends RigidBody3D
 var loopTimer = 0
 var index = 0
 
-const MIN_VEL = -3
-const MAX_VEL = 3
-const ARRAY_LENGTH = 20
+
 
 var data = {}
-
+var running = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Engine.set_time_scale(1)
-	initialize_data_with_random_numbers()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -29,8 +26,10 @@ func _process(delta: float) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	if !running: return
+	
 	loopTimer += delta
-	if loopTimer > 0.05:
+	if loopTimer > 0.2:
 		loopTimer = 0
 		loop()
 
@@ -46,9 +45,9 @@ func loop() -> void :
 	leg4.set_tibia_velocity(data["Leg4Tibia"][index])
 	
 	index += 1
-	if index >= ARRAY_LENGTH: index = 0
+	if index >= Manager.ARRAY_LENGTH: index = 0
 
-func initialize_data_with_random_numbers() -> void:
+func randomize_data() -> void:
 	data.clear()
 	
 	data["Leg1Femur"] = []
@@ -60,9 +59,9 @@ func initialize_data_with_random_numbers() -> void:
 	data["Leg3Tibia"] = []
 	data["Leg4Tibia"] = []
 	
-	for i in ARRAY_LENGTH:
+	for i in Manager.ARRAY_LENGTH:
 		for key in data.keys():
-			data[key].append(randf_range(MIN_VEL,MAX_VEL))
+			data[key].append(randf_range(Manager.MIN_VEL,Manager.MAX_VEL))
 			
 
 func calculate_fitness() -> float:
@@ -75,4 +74,7 @@ func calculate_fitness() -> float:
 	
 	if distanceTraveled < 0: fitness -= 100
 	
-	return fitness
+	return snapped(fitness,0.01)
+	
+func is_survivor():
+	$AnimationPlayer.play("survivor")

@@ -10,6 +10,8 @@ extends Camera3D
 
 @onready var _velocity = default_velocity
 
+
+
 func _input(event):
 	if not current:
 		return

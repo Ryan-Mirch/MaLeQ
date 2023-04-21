@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ufnn2llth4ud"]
+[gd_scene load_steps=8 format=3 uid="uid://ufnn2llth4ud"]
 
 [ext_resource type="Script" path="res://Body.gd" id="1_lm7nj"]
 [ext_resource type="PackedScene" uid="uid://thgtnt4jl02w" path="res://Leg.tscn" id="2_u5xlj"]
@@ -6,49 +6,55 @@
 [sub_resource type="BoxMesh" id="BoxMesh_3413e"]
 size = Vector3(0.5, 0.1, 0.5)
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_prsq0"]
-albedo_color = Color(0.0745098, 0.4, 0.0823529, 1)
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_eppmq"]
+albedo_color = Color(0.0627451, 0.439216, 0.121569, 1)
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_lfm2c"]
+[sub_resource type="BoxMesh" id="BoxMesh_kjlqy"]
+size = Vector3(0.5, 0.1, 0.5)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_xmvpr"]
 albedo_color = Color(0.407843, 0.819608, 0.407843, 1)
+emission = Color(0.737255, 0.737255, 0.737255, 1)
+emission_energy_multiplier = 3.13
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ayf3"]
 size = Vector3(0.5, 0.1, 0.5)
 
 [node name="MaLeQ" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593989, 0)
-collision_layer = 2
+collision_layer = 0
 mass = 0.1
 script = ExtResource("1_lm7nj")
 
 [node name="Body Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 1.46028e-29, 0, 1, -1.27662e-36, 0, -3.34075e-22, 1, 4.37113e-09, 0.05, -2.18557e-09)
 mesh = SubResource("BoxMesh_3413e")
-surface_material_override/0 = SubResource("ORMMaterial3D_prsq0")
+surface_material_override/0 = SubResource("ORMMaterial3D_eppmq")
 
 [node name="Head Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.27562, 0, 0, 0, 1, 8.88178e-16, 0, -3.34075e-22, 0.288016, -0.31093, 0.0713567, -1.25125e-09)
-mesh = SubResource("BoxMesh_3413e")
-surface_material_override/0 = SubResource("ORMMaterial3D_lfm2c")
+mesh = SubResource("BoxMesh_kjlqy")
+surface_material_override/0 = SubResource("ORMMaterial3D_xmvpr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -1.67037e-22, 0, -1.67037e-22, 1, 4.37113e-09, 0.05, -2.18557e-09)
 shape = SubResource("BoxShape3D_4ayf3")
 
 [node name="Leg1" parent="." instance=ExtResource("2_u5xlj")]
-transform = Transform3D(0.707107, 1.42109e-14, 0.707107, 4.9738e-14, 1, 7.10543e-15, -0.707107, 3.90799e-14, 0.707107, 0.25, 0.05, 0.25)
+transform = Transform3D(0.707107, 1.42109e-14, 0.707107, 4.9738e-14, 1, 7.10543e-15, -0.707107, 3.90799e-14, 0.707107, 0.25, -0.0384823, 0.25)
 
 [node name="Leg2" parent="." instance=ExtResource("2_u5xlj")]
-transform = Transform3D(-0.707106, 1.31134e-07, 0.707106, 1.23634e-07, 1, -6.18172e-08, -0.707106, 4.37114e-08, -0.707106, 0.25, 0.0500004, -0.25)
+transform = Transform3D(-0.707106, 1.31134e-07, 0.707106, 1.23634e-07, 1, -6.18172e-08, -0.707106, 4.37114e-08, -0.707106, 0.25, -0.0384819, -0.25)
 
 [node name="Leg3" parent="." instance=ExtResource("2_u5xlj")]
-transform = Transform3D(-0.707106, 1.74845e-07, -0.707106, 1.85452e-07, 1, 6.18172e-08, 0.707106, -8.74227e-08, -0.707106, -0.25, 0.05, -0.25)
+transform = Transform3D(-0.707106, 1.74845e-07, -0.707106, 1.85452e-07, 1, 6.18172e-08, 0.707106, -8.74227e-08, -0.707106, -0.25, -0.0384823, -0.25)
 
 [node name="Leg4" parent="." instance=ExtResource("2_u5xlj")]
-transform = Transform3D(0.707106, 4.37113e-08, -0.707107, 6.18173e-08, 1, 1.23634e-07, 0.707107, -1.31134e-07, 0.707106, -0.25, 0.0499998, 0.25)
+transform = Transform3D(0.707106, 4.37113e-08, -0.707107, 6.18173e-08, 1, 1.23634e-07, 0.707107, -1.31134e-07, 0.707106, -0.25, -0.0384825, 0.25)
 
 [node name="Fitness" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -3.34075e-22, 1, -1.62391e-08, 0.190325, 8.11956e-09)
+visible = false
 billboard = 1
 no_depth_test = true
 font_size = 24

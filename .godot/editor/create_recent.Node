@@ -1,3 +1,9 @@
+Label
+VBoxContainer
+HSlider
+CheckButton
+CheckBox
+AnimationPlayer
 HBoxContainer
 SpinBox
 Button

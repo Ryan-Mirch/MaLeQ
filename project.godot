@@ -15,6 +15,10 @@ run/main_scene="res://Test.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Manager="*res://Manager.gd"
+
 [display]
 
 window/size/viewport_width=1400
@@ -28,7 +32,7 @@ window/size/viewport_height=1200
 [physics]
 
 3d/physics_engine="GodotPhysics3D"
-3d/solver/solver_iterations=1024
+3d/solver/solver_iterations=500
 
 [rendering]
 
